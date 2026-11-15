@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raptor Portfolio</title>
+<meta name="description" content="Raptor: product builder. Rexload, Korvlotten and passion projects for gaming communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600;100..125,800&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: recruiter-first. Short intro, one featured case study (Rexload) told as
+   Problem / Approach / Outcome, then compact cards for other work, skills, contact. */
+:root {
+  --ground: #f5f5f1;
+  --card: #ffffff;
+  --ink: #13151a;
+  --soft: #555b66;
+  --rule: #d9dbd5;
+  --accent: #2343c8;       /* cobalt */
+  --accent-wash: #e4e9fb;
+  --feature: #10131c;      /* featured band */
+  --feature-ink: #f1f3f8;
+  --feature-soft: #a9b1c4;
+  --signal: #ff8a2a;       /* Rexload lava orange, used only in the feature */
+  --f-display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0f1116; --card: #171a21; --ink: #eceef3; --soft: #a2a9b6; --rule: #2a2f3a;
+    --accent: #8ea4ff; --accent-wash: #1c2440; --feature: #07090e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0f1116; --card: #171a21; --ink: #eceef3; --soft: #a2a9b6; --rule: #2a2f3a;
+  --accent: #8ea4ff; --accent-wash: #1c2440; --feature: #07090e; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html, body { margin: 0; }
+body { background: var(--ground); color: var(--ink); font: 400 17px/1.6 var(--f-body); }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
+h1, h2, h3 { font-family: var(--f-display); font-stretch: 112%; text-wrap: balance; letter-spacing: -.015em; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.mono { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+
+nav { position: sticky; top: 0; z-index: 5; background: var(--ground); border-bottom: 1px solid var(--rule); }
+nav .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; padding-top: 12px; padding-bottom: 12px; }
+nav .who { font: 800 18px/1 var(--f-display); font-stretch: 112%; }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 0; }
+nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+nav a:hover { color: var(--accent); }
+
+.intro { padding: 56px 0 44px; }
+.intro h1 { font-size: clamp(34px, 6vw, 60px); font-weight: 800; line-height: 1.02; max-width: 17ch; margin-top: 12px; }
+.intro p { max-width: 60ch; margin-top: 18px; color: var(--soft); font-size: 19px; }
+.intro .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.btn { display: inline-block; font: 600 15px/1 var(--f-body); text-decoration: none; padding: 13px 18px; border-radius: 8px; border: 1.5px solid var(--ink); color: var(--ink); }
+.btn.solid { background: var(--ink); color: var(--ground); }
+
+.feature { background: var(--feature); color: var(--feature-ink); padding: 56px 0; }
+.feature .mono { color: var(--signal); }
+.feature h2 { font-size: clamp(40px, 8vw, 84px); font-weight: 800; line-height: .95; margin-top: 10px; }
+.feature .tag { font-size: 21px; max-width: 48ch; margin-top: 14px; color: var(--feature-ink); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0; margin-top: 30px; border-top: 1px solid #2b3142; border-bottom: 1px solid #2b3142; }
+.facts div { padding: 14px 16px 14px 0; }
+.facts dt { font: 500 11px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--feature-soft); }
+.facts dd { font-weight: 600; margin-top: 4px; }
+.poa { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 34px; }
+.poa h3 { font-size: 15px; font-weight: 600; font-stretch: 100%; letter-spacing: .08em; text-transform: uppercase; color: var(--signal); font-family: var(--f-mono); }
+.poa p { margin-top: 10px; color: #d5d9e4; font-size: 16px; }
+.wins { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 34px; }
+.win { border: 1px solid #2b3142; border-radius: 12px; padding: 18px; background: #141926; }
+.win h4 { font: 600 17px/1.25 var(--f-body); color: var(--feature-ink); }
+.win p { color: var(--feature-soft); font-size: 15px; margin-top: 6px; }
+.feature .links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; align-items: baseline; }
+.feature .links a { color: var(--signal); font-weight: 600; }
+.feature .links span { color: var(--feature-soft); font-size: 14px; }
+
+section.block { padding: 52px 0; border-bottom: 1px solid var(--rule); }
+section.block > .wrap > h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 800; margin-top: 8px; }
+section.block > .wrap > p.sub { color: var(--soft); max-width: 62ch; margin-top: 10px; }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 26px; }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.card h3 { font-size: 22px; font-weight: 800; }
+.card p { font-size: 16px; }
+.card ul { padding-left: 18px; color: var(--soft); font-size: 15px; display: flex; flex-direction: column; gap: 4px; }
+.card .foot { margin-top: auto; padding-top: 8px; font-size: 14px; color: var(--soft); }
+.chip { align-self: flex-start; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; background: var(--accent-wash); color: var(--accent); padding: 6px 9px; border-radius: 4px; }
+
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 26px; }
+.skills h3 { font-size: 17px; font-weight: 800; }
+.skills ul { padding-left: 18px; margin-top: 8px; color: var(--soft); font-size: 16px; display: flex; flex-direction: column; gap: 4px; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 22px; }
+.about p + p { margin-top: 12px; }
+.draft { border: 1.5px dashed var(--accent); border-radius: 10px; padding: 16px 18px; background: var(--accent-wash); font-size: 15px; }
+.draft b { color: var(--accent); }
+footer { padding: 28px 0 56px; color: var(--soft); font-size: 14px; }
+
+@media (max-width: 760px) {
+  .poa, .wins, .cards, .skills, .about { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <span class="who">Raptor</span>
+    <ul>
+      <li><a href="#rexload">Rexload</a></li>
+      <li><a href="#work">More work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="intro">
+  <div class="wrap">
+    <span class="mono">Product builder &middot; Stockholm</span>
+    <h1>I take ideas from zero to shipped.</h1>
+    <p>I scope, design and ship small products end to end: a fitness app my friends train with, a live daily game with a public leaderboard, and a handful of passion projects for gaming communities. I work AI-first, pairing with Claude to move from concept to release in days.</p>
+    <div class="cta">
+      <a class="btn solid" href="#rexload">See the Rexload case study</a>
+      <a class="btn" href="#work">More work</a>
+    </div>
+  </div>
+</header>
+
+<section class="feature" id="rexload">
+  <div class="wrap">
+    <span class="mono">Featured case study</span>
+    <h2>Rexload</h2>
+    <p class="tag">A workout tracker for Android with a T-rex coach, built so a group of friends would actually keep training together.</p>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Solo product owner: concept, design, QA, release</dd></div>
+      <div><dt>Platform</dt><dd>Android, private distribution</dd></div>
+      <div><dt>Built with</dt><dd>AI pair programming (Claude)</dd></div>
+      <div><dt>Status</dt><dd>Live with an invite-only group</dd></div>
+    </dl>
+
+    <div class="poa">
+      <div>
+        <h3>Problem</h3>
+        <p>Most lifting apps are either spreadsheets with a skin or subscription funnels. I wanted one that felt fun enough to open every session, kept my data on my phone, and made training with friends feel like a shared thing rather than a feed of strangers.</p>
+      </div>
+      <div>
+        <h3>Approach</h3>
+        <p>I owned the product end to end. I defined a tight core loop (next workout, log sets, rest timer), gave the app a personality through a coach character, and added a friends-only feed. Then I solved distribution without an app store, including the onboarding for non-technical users.</p>
+      </div>
+      <div>
+        <h3>Outcome</h3>
+        <p>A shipped, self-updating app in the hands of real users. Friends install it from a private repository in about 15 minutes using a six-step illustrated guide I wrote, and every later release reaches them automatically.</p>
+      </div>
+    </div>
+
+    <div class="wins">
+      <div class="win"><h4>A coach with a point of view</h4><p>D.I.N.O. works fully offline: today's plan, post-workout reviews, flags on stalling lifts, and swaps when something hurts. An optional smart mode answers open training questions using the user's own API key.</p></div>
+      <div class="win"><h4>Social, on the user's terms</h4><p>The Pack is a friends-only feed with reactions and comments, joined by six-character friend codes. Only what you choose to post is shared. The full workout log never leaves the phone.</p></div>
+      <div class="win"><h4>Distribution as a product problem</h4><p>No store listing, so I designed the install path myself: private releases, automatic background updates that keep user data, and a troubleshooting table for every error a new user is likely to hit.</p></div>
+      <div class="win"><h4>Details that earn daily use</h4><p>Rest alerts that arrive on the second with the phone in a pocket, one-tap backup export, profile photos and mottos, and two complete visual themes: synthwave neon, and jungle with lava.</p></div>
+    </div>
+
+    <div class="links">
+      <span>Private build for an invite-only group. Walkthrough available on request.</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="work">
+  <div class="wrap">
+    <span class="mono">More shipped work</span>
+    <h2>Live product and passion projects</h2>
+    <p class="sub">One public release, and three community projects I build for the love of it. The passion projects sit close to other people's worlds, so I keep the specifics for a conversation.</p>
+    <div class="cards">
+      <article class="card">
+        <span class="chip">Live game</span>
+        <h3>Korvlotten</h3>
+        <p>A daily scratch-ticket game with one honest rule: your score equals the real odds of the exact sausage you drew.</p>
+        <ul>
+          <li>Designed a transparent scoring economy across 33 types and five modifier layers, with top draws worth hundreds of millions of points.</li>
+          <li>Drove return visits with a daily streak multiplier, a seasonal leaderboard (now in Season 2) and friend codes.</li>
+          <li>Built escalating reveal moments so a rare pull feels like an event.</li>
+        </ul>
+        <p class="foot"><a href="https://claude.ai/artifact/URpZk8ZBu54S3XuGsAxXzd">Play it live</a> &middot; public</p>
+      </article>
+
+      <article class="card">
+        <span class="chip">Passion project</span>
+        <h3>Roleplay toolkit for an MMO community</h3>
+        <p>A suite of three in-game addons that make roleplay feel more natural, sharing one character profile between them.</p>
+        <ul>
+          <li>Reframed a long-standing immersion problem: you only learn a stranger's name once they introduce themselves.</li>
+          <li>Shipped a field journal that builds itself from the player's own activity instead of a database.</li>
+          <li>Designed a hold-and-flick ring menu with about 35 actions, extensible in-game.</li>
+        </ul>
+        <p class="foot">Public showcase page with screenshots. Link on request.</p>
+      </article>
+
+      <article class="card">
+        <span class="chip">Passion project</span>
+        <h3>Launch site for a fan-made roguelite</h3>
+        <p>The public home for an in-development survivors-style game at version 0.4.0.</p>
+        <ul>
+          <li>Owned the full content structure: trailer, screenshots, roster, ability catalogue and patch notes.</li>
+          <li>Turned the core mechanic, a 30-minute escalating run, into the page's centrepiece.</li>
+        </ul>
+        <p class="foot">Live. Link on request.</p>
+      </article>
+
+      <article class="card">
+        <span class="chip">Passion project</span>
+        <h3>Companion overlay for an action RPG</h3>
+        <p>A desktop overlay that follows a player through a long campaign and into the endgame, turning the page on its own as they progress.</p>
+        <ul>
+          <li>Translated a community build guide into 144 step-by-step pages plus goal-based endgame chapters.</li>
+          <li>Read-only by design: it watches the game's log file and never touches the game.</li>
+        </ul>
+        <p class="foot">Prototype, in first-round testing.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills">
+  <div class="wrap">
+    <span class="mono">What I bring</span>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li>Zero-to-one scoping and prioritisation</li>
+          <li>Core loop and retention design</li>
+          <li>Onboarding for non-technical users</li>
+          <li>Release and update strategy</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Design</h3>
+        <ul>
+          <li>Mobile-first interface design</li>
+          <li>Character and brand voice</li>
+          <li>Game economy and reward pacing</li>
+          <li>Technical writing and guides</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Delivery</h3>
+        <ul>
+          <li>AI-assisted development with Claude</li>
+          <li>Rapid prototyping and iteration</li>
+          <li>Hands-on QA with real users</li>
+          <li>Private distribution pipelines</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap">
+    <span class="mono">About</span>
+    <h2>How I work</h2>
+    <div class="about">
+      <div>
+        <p>I build things I want to use, then make them good enough that other people want them too. Rexload started as my own training log and became the app my friends lift with.</p>
+        <p>I treat AI as a force multiplier, not a shortcut. I set the direction, make the product calls and test everything myself; Claude helps me get from idea to working release fast.</p>
+      </div>
+      <div>
+        <p>I care most about the parts users feel: the first five minutes, the moment something goes wrong, and the small touches that bring people back the next day.</p>
+        <p>Everything here was shipped in a three-week stretch in autumn 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Raptor &middot; Selected work, autumn 2026</div>
+</footer>
+</body>
+</html>

@@ -1,16 +1,14 @@
-## Hi there 👋
+# Raptor
 
-<!--
-**actualraptor/actualraptor** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Product builder in Stockholm. I take ideas from zero to shipped: I scope, design and release small products end to end, working AI-first with Claude.
 
-Here are some ideas to get you started:
+**Portfolio: [actualraptor.github.io/actualraptor](https://actualraptor.github.io/actualraptor/)**
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Featured
+
+**Rexload** · Android workout tracker with a T-rex coach, a friends-only feed and self-updating private distribution. Live with an invite-only group. [Case study](https://actualraptor.github.io/actualraptor/#rexload)
+
+## More work
+
+- **Korvlotten** · A daily scratch-ticket game where your score is the real odds of your draw. Seasonal leaderboard, streaks and friend codes. [Play it](https://claude.ai/artifact/URpZk8ZBu54S3XuGsAxXzd)
+- **Passion projects** · A roleplay toolkit for an MMO community, a launch site for a fan-made roguelite, and a companion overlay for an action RPG. [Details](https://actualraptor.github.io/actualraptor/#work)
